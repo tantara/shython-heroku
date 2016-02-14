@@ -30,7 +30,7 @@ function activate() {
       console.log('Service Worker is ready :^)', reg);
       navigator.serviceWorker.controller.postMessage({'token': tokenKey()});
 
-      reg.pushManager.subscribe({userVisibleOnly: false}).then(function(sub) {
+      reg.pushManager.subscribe({userVisibleOnly: true}).then(function(sub) {
 
         console.log('endpoint:', sub.endpoint);
         saveDevice(sub.endpoint);
