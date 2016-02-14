@@ -9,8 +9,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
 .constant('SERVER', {
   //host: 'http://192.168.0.9:3000',
-  host: 'http://api-sugang.snu.ac',
-  web: 'http://sugang.snu.ac',
+  host: 'https://api-sugang.snu.ac',
+  web: 'https://sugang.snu.ac',
 })
 
 .run(function($ionicPlatform, $rootScope, $state, AuthService, AUTH_EVENTS, $ionicLoading, SERVER, $ionicPopup, $cordovaDevice, $window, $cordovaInAppBrowser, $ionicHistory, $cordovaKeychain) {
