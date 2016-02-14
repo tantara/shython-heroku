@@ -1,0 +1,33 @@
+<ion-view view-title="강의교환" cache-view="false">
+  <ion-nav-buttons side="right">
+    <a class="button" href="#/tab/market/create">
+      글쓰기
+    </a>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-refresher
+        pulling-text="로딩중..."
+        on-refresh="doRefresh()">
+    </ion-refresher>
+    <div class="list">
+      <div class="item item-divider" ng-show="header.length > 0">
+        {{header}}
+      </div>
+
+      <a class="item item-icon-right" ng-repeat="post in posts" href="#/tab/market/{{post.id}}">
+        <h2>{{$index + 1}}. {{post.title}}({{post.read_count}})</h2>
+        <p>{{post.content}}</p>
+        <i class="icon icon-accessory last-history">
+          <span class="item-note" am-time-ago="post.created_at | toTime"></span>
+        </i>
+        <i class="icon ion-chevron-right icon-accessory">
+        </i>
+      </a>
+    </div>
+    <ion-infinite-scroll
+           ng-if="canBeLoaded"
+           on-infinite="loadMore()"
+           distance="1%">
+    </ion-infinite-scroll>
+  </ion-content>
+</ion-view>

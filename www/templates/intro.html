@@ -1,0 +1,84 @@
+<style>
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+.slider {
+  height: 100%;
+}
+.slider-slide {
+  padding-top: 80px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+
+#logo {
+  margin: 30px 0px;
+}
+
+#list {
+  width: 170px;
+  margin: 30px auto;
+  font-size: 20px;
+}
+#list ol {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+#list ol li {
+  text-align: left;
+  list-style: decimal;
+  margin: 10px 0px;
+}
+
+.button.ng-hide{
+  display:none;
+}
+</style>
+
+<ion-view title="샤이썬">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+
+    <div class="spacer"></div>
+
+    <ion-slide-box>
+
+      <!-- Slide page one -->
+      <ion-slide>
+        <h3 class="text-center">샤이썬은</h3>
+        <p class="text-center">서울대학교 수강신청 빈자리 알리미입니다.</p>
+        <div class="row">
+          <div class="col col-50 col-offset-25">
+            <img class="full-image" style="max-width: 400px;" src="img/icon.png">
+          </div>
+        </div>
+      </ion-slide>
+
+      <ion-slide>
+        <h3>샤이썬의 기능은</h3>
+        <div id="list">
+          <h5>아직 초기 단계이지만:</h5>
+          <ol>
+            <li>빈자리 알림</li>
+            <li>일정(수강편람 공개, 수강신청 일) 알림</li>
+            <li>각종 통계 자료(빈자리 변동 현황)</li>
+            <li>sugang.snu.ac.kr 자동 로그인</li>
+            <li>강의 교환 장터 제공</li>
+          </ol>
+          <h5>을 지원합니다.</h5>
+        </div>
+      </ion-slide>
+
+      <!-- Slide page two -->
+      <ion-slide>
+        <img class="full-image" style="max-width: 600px;" src="img/bg.png"/>
+        <button class="button button-positive button-block icon" style="max-width: 600px; margin: 15px auto;" ng-click="start()">시작하기</button>
+      </ion-slide>
+
+      <!-- More slides here... -->
+    </ion-slide-box>
+  </ion-content>
+</ion-view>

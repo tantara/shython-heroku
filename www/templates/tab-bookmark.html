@@ -1,0 +1,43 @@
+<ion-view view-title="즐겨찾기" cache-view="false">
+  <ion-nav-buttons side="right">
+    <a class="button" href="#/tab/bookmark/hot">HOT</a>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-refresher
+        pulling-text="로딩중..."
+        on-refresh="doRefresh()">
+    </ion-refresher>
+    <div class="list">
+      <div class="item item-divider" ng-show="header.length > 0">
+        {{header}}
+      </div>
+
+      <a class="item item-icon-right" ng-repeat="lecture in lectures" href="#/tab/bookmark/lectures/{{lecture.id}}">
+        <h2>{{$index + 1}}. {{lecture.course.name}}, {{lecture.instructor.name}}</h2>
+        <p>신청현황 <ng-quota cur="{{lecture.current}}" quota="{{lecture.current_quota}}">{{lecture.current}}/{{lecture.quota}}<span ng-show="lecture.quota != lecture.current_quota">(재학생 {{lecture.current_quota}}명)</span></ng-quota>, {{lecture.course.code}}({{lecture.code}})</p>
+        <i class="icon icon-accessory last-history">
+          <span class="item-note" am-time-ago="lecture.last_history.created_at | toTime"></span>
+        </i>
+        <i class="icon ion-chevron-right icon-accessory">
+        </i>
+      </a>
+
+      <div class="item" ng-show="recommend_header.length > 0">
+      </div>
+
+      <div class="item item-divider" ng-show="recommend_header.length > 0">
+        {{recommend_header}}
+      </div>
+
+      <a class="item item-icon-right" ng-repeat="lecture in recommend_lectures" href="#/tab/bookmark/lectures/{{lecture.id}}">
+        <h2>{{$index + 1}}. {{lecture.course.name}}, {{lecture.instructor.name}}</h2>
+        <p>신청현황 <ng-quota cur="{{lecture.current}}" quota="{{lecture.current_quota}}">{{lecture.current}}/{{lecture.quota}}<span ng-show="lecture.quota != lecture.current_quota">(재학생 {{lecture.current_quota}}명)</span></ng-quota>, {{lecture.course.code}}({{lecture.code}})</p>
+        <i class="icon icon-accessory last-history">
+          <span class="item-note" am-time-ago="lecture.last_history.created_at | toTime"></span>
+        </i>
+        <i class="icon ion-chevron-right icon-accessory">
+        </i>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

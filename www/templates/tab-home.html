@@ -1,0 +1,64 @@
+<ion-view view-title="{{season}}">
+  <ion-nav-buttons side="right">
+    <a ng-show="mode=='search'" class="button" ng-click="init()">
+      <i class="icon ion-close"></i>
+    </a>
+    <a ng-show="mode!='search'" class="button" ng-click="goToNoti()">
+      <i class="icon ion-android-notifications-none" ng-if="unread <= 0"></i>
+      <i class="icon ion-android-notifications stable" ng-if="unread > 0"></i>
+    </a>
+  </ion-nav-buttons>
+  <ion-content>
+    <ion-refresher
+        pulling-text="로딩중..."
+        on-refresh="doRefresh()">
+    </ion-refresher>
+
+    <img ng-if="banner.image" ng-src="{{banner.image}}" class="full-image" ng-click="openAd({{banner}})" />
+    <div class="bar bar-header item-input-inset">
+      <label class="item-input-wrapper">
+        <i class="icon ion-ios-search placeholder-icon"></i>
+        <input type="search" placeholder="대학영어 or 031.001" ng-model="searchForm.query" ng-enter="search(searchForm.query)">
+      </label>
+      <button class="button button-clear" ng-class="{'button-positive': searchForm.query.length > 0}" ng-click="search(searchForm.query)">
+        검색
+      </button>
+    </div>
+
+    <div class="padding padding-abb" ng-show="abb.length > 0">
+      <button class="button button-clear button-xsmall button-dark">{{abbText}}</button>
+      <button class="button button-outline button-positive button-xsmall" ng-repeat="a in abb" ng-click="search(a)">
+        {{a}}
+      </button>
+      <button class="button button-outline button-xsmall button-dark" ng-click="showAbbModal()" ng-show="mode=='search'">축약어 추가하기</button>
+    </div>
+
+    <div class="padding padding-abb" ng-show="abb.length == 0 && abbText.length > 0">
+      <button class="button button-clear button-xsmall button-dark">{{abbText}}</button>
+      <button class="button button-outline button-xsmall button-dark" ng-click="showAbbModal()" ng-show="mode=='search'">축약어 추가하기</button>
+    </div>
+
+    <div class="list">
+      <div class="item item-icon-left" ng-show="notice.length > 0">
+        <h2>공지사항</h2>
+        <p class="multiline-p">{{notice}}</p>
+        <i class="icon ion-ios-information-outline"></i>
+      </div>
+
+      <div class="item item-divider" ng-show="header.length > 0">
+        {{header}}
+      </div>
+
+      <a class="item item-icon-right" ng-repeat="lecture in lectures" href="#/tab/home/lectures/{{lecture.id}}">
+        <h2>{{$index + 1}}. {{lecture.course.name}}, {{lecture.instructor.name}}</h2>
+        <p>신청현황 <ng-quota cur="{{lecture.current}}" quota="{{lecture.current_quota}}">{{lecture.current}}/{{lecture.quota}}<span ng-show="lecture.quota != lecture.current_quota">(재학생 {{lecture.current_quota}}명)</span></ng-quota>, {{lecture.course.code}}({{lecture.code}})</p>
+        <i class="icon icon-accessory last-history">
+          <span class="item-note" am-time-ago="lecture.last_history.created_at | toTime"></span>
+        </i>
+        <i class="icon ion-chevron-right icon-accessory">
+        </i>
+      </a>
+
+    </div>
+  </ion-content>
+</ion-view>

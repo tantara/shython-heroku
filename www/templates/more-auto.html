@@ -1,0 +1,39 @@
+<ion-view view-title="자동 로그인 설정" cache-view="false">
+  <ion-nav-buttons side="right">
+    <a class="button" ng-click="init()">
+      초기화하기
+    </a>
+  </ion-nav-buttons>
+  <ion-content>
+    <div class="list">
+      <label class="item" ng-show="isSet && oldTs > 0">
+        마지막 로그인 시간
+        <span class="item-note">
+          <span am-time-ago="oldTs | amFromUnix"></span>
+        </span>
+      </label>
+      <div class="padding" ng-show="isSet && oldTs > 0">
+        <button ng-click="initTime()" class="button button-positive button-small button-block">재설정하기</button>
+      </div>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">학번</span>
+        <input type="text" placeholder="수강신청 학번" ng-model="form.id">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">비밀번호</span>
+        <input type="password" placeholder="수강신청 비밀번호" ng-model="form.password">
+      </label>
+      <div class="padding">
+        <button ng-click="save()" class="button button-positive button-block">저장하기</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-text-wrap">
+        *학번 및 비밀번호는 앱 내부에만 저장되며 절대로 서버로 전송되지 않습니다. 오직 sugang.snu.ac.kr 자동 로그인에만 사용됩니다.
+      </div>
+      <div class="item item-text-wrap">
+        *자동 로그인 기능은 강의 정보 페이지의 하단 탭('수강신청하기' 버튼)을 확인해주세요.
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

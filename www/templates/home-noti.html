@@ -1,0 +1,22 @@
+<ion-view view-title="알림판">
+  <ion-content>
+    <ion-refresher
+        pulling-text="로딩중..."
+        on-refresh="doRefresh()">
+    </ion-refresher>
+    <div class="list">
+      <div class="item item-divider" ng-show="header.length > 0">
+        {{header}}
+      </div>
+
+      <li class="item item-icon-right" ng-repeat="noti in notis">
+        <h2 ng-if="noti.lecture">{{noti.lecture.course.name}}, {{noti.lecture.instructor.name}}</h2>
+        <p>{{noti.content}}</p>
+        <i class="icon icon-accessory last-history">
+          <span class="item-note" am-time-ago="noti.created_at | toTime"></span>
+        </i>
+      </li>
+
+    </div>
+  </ion-content>
+</ion-view>

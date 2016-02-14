@@ -1,0 +1,91 @@
+<ion-view cache-view="false">
+  <ion-nav-title>{{lecture.course.name}} - {{lecture.instructor.name}}</ion-nav-title>
+  <ion-nav-buttons side="right">
+    <a class="button button-icon" ng-class="{'ion-ios-star-outline': !lecture.isBookmarked, 'ion-ios-star': lecture.isBookmarked}" ng-click="toggle(lecture.id)"></a>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+    <div class="scroll">
+      <h4><ng-quota cur="{{lecture.current}}" quota="{{lecture.current_quota}}">현재 {{lecture.current}}명</ng-quota> / 정원 {{lecture.quota}}명<span ng-show="lecture.quota != lecture.current_quota">(재학생 {{lecture.current_quota}}명)</span></h4>
+      <p></p>
+
+      <div class="button-bar bar-stable">
+        <a class="button" ng-class="{'button-positive': tab==1}" ng-click="tabChanged(1)">통계</a>
+        <a class="button" ng-class="{'button-positive': tab==2}" ng-click="tabChanged(2)">정보</a>
+      </div>
+
+      <div class="list" ng-show="tab == 1">
+        <li class="item item-divider">
+          즐겨찾기 등록한 사람
+        </li>
+        <li class="item">{{lecture.bookmarkCount}}명</li>
+        <li class="item item-divider" ng-if="similar_lectures.length > 0">
+          유사 강의
+        </li>
+        <li class="item" ng-repeat="l in similar_lectures">
+          <h2>{{$index + 1}}. {{l.course.name}}, {{l.instructor.name}}</h2>
+          <p>신청현황 <ng-quota cur="{{l.current}}" quota="{{l.current_quota}}">{{l.current}}/{{l.quota}}<span ng-show="l.quota != l.current_quota">(재학생 {{l.current_quota}}명)</span></ng-quota>, {{l.course.code}}({{l.code}})</p>
+        </li>
+        <li class="item item-divider">
+          최근 변동 사항
+        </li>
+        <li class="item" ng-show="lecture.lecture_histories.length == 0">
+          데이터 없음
+        </li>
+        <li class="item" ng-repeat="h in lecture.lecture_histories">
+          {{h.content}}
+          <br><span am-time-ago="h.created_at"></span> 
+        </li>
+      </div>
+      <div class="list" ng-show="tab == 2">
+        <li class="item item-divider">
+          교과목번호(강좌번호)
+        </li>
+        <li class="item">
+          [{{lecture.course.course_type | courseType2Str }}, {{lecture.course.credit}}학점] {{lecture.course.code}}({{lecture.code}})
+        </li>
+        <li class="item item-divider">
+          주담당교수
+        </li>
+        <li class="item">
+          {{lecture.instructor.name}}({{lecture.instructor.department.name}}, {{lecture.instructor.college.name}})
+        </li>
+        <li class="item item-divider" ng-if="lecture.lang.length > 0">
+          강의 언어
+        </li>
+        <li class="item" ng-if="lecture.lang.length > 0">
+          {{lecture.lang}}
+        </li>
+        <li class="item item-divider">
+          강의 대상(권장)
+        </li>
+        <li class="item">
+        {{lecture.course.status}}<span ng-if="lecture.course.academic_year > 0">({{lecture.course.academic_year}}학년)</span>
+        </li>
+        <li class="item item-divider" ng-if="lecture.remark.length > 0">
+         비고
+        </li>
+        <li class="item" ng-if="lecture.remark.length > 0">
+          <p class="multiline-p">{{lecture.remark}}</p>
+        </li>
+        <li class="item item-divider">
+          강의실 / 시간
+        </li>
+        <li class="item" ng-repeat="time in lecture.time_arr">
+          {{lecture.location_arr[$index]}} / {{time}}
+        </li>
+      </div>
+    </div>
+  </ion-content>
+
+  <ion-footer-bar class="bar-stable bar bar-footer has-tabs">
+    <button class="button" ng-click="openLecture(lecture)">
+      수강편람보기
+    </button>
+    <button class="button" ng-click="sendMail(lecture)">
+      초안지쓰기
+    </button>
+    <button class="button" ng-click="registerLecture(lecture)">
+      수강신청하기
+    </button>
+  </ion-footer-bar>
+</ion-view>

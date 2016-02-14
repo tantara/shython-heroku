@@ -1,0 +1,19 @@
+<ion-view>
+  <ion-nav-title>{{post.title}} - {{lecture.instructor.name}}</ion-nav-title>
+  <ion-nav-buttons side="right">
+    <a class="button" ng-click="contact()">
+      연락하기
+    </a>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+    <div class="scroll">
+      <h4>제목 {{post.title}}</h4>
+      <p>내용</p>
+      <p>{{post.content}}</p>
+      <div ng-if="post.link">
+        <p>오픈채팅 링크</p>
+        <p>{{post.link}}</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

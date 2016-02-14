@@ -1,0 +1,30 @@
+<ion-view view-title="프로필 설정">
+  <ion-content>
+    <div class="list">
+      <label class="item item-input item-select">
+        <span class="input-label">입학년도</span>
+        <select ng-model="profileForm.year">
+          <option value="">선택해주세요</option>
+          <option ng-repeat="year in years" value="{{year}}" ng-selected="year == profileForm.year">{{year}}년</option>
+        </select>
+      </label>
+      <label class="item item-input item-select">
+        <span class="input-label">학적</span>
+        <select ng-model="profileForm.state">
+          <option value="">선택해주세요</option>
+          <option value="graduate">학부생</option>
+          <option value="master">석사</option>
+          <option value="doctor">박사</option>
+        </select>
+      </label>
+      <div class="padding">
+        <button ng-click="save()" class="button button-positive button-block">저장하기</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-text-wrap">
+        *불필요한 알림을 받지 않기 위해서 설정합니다. 예를 들어, 프로필 설정 이후에는 신입생 수강신청 알림은 재학생에게 발송되지 않습니다.
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

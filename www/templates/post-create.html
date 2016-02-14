@@ -1,0 +1,28 @@
+<ion-view view-title="글쓰기">
+  <ion-content>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">제목</span>
+        <input type="text" placeholder="필수" ng-model="form.title">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">내용</span>
+        <textarea placeholder="필수" ng-model="form.content">
+        </textarea>
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">오픈채팅 링크</span>
+        <input type="url" placeholder="연락수단" ng-model="form.link">
+      </label>
+      <div class="padding">
+        <button ng-click="write()" class="button button-positive button-block">글쓰기</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="item item-text-wrap">
+        *강의를 사고 파는 행위는 금지되어있습니다. 
+        관련 내용이 포함된 게시물은 임의로 삭제될 수 있으니 유의하시기 바랍니다.
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

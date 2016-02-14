@@ -1,0 +1,20 @@
+<ion-view view-title="변동사항">
+  <ion-content>
+    <div class="list">
+      <div class="item item-divider" ng-show="header.length > 0">
+        {{header}}
+      </div>
+
+      <a class="item item-icon-right" ng-repeat="noti in notis" href="#/tab/more/lectures/{{noti.lecture.id}}">
+        <h2>{{$index + 1}}. {{noti.lecture.course.name}}, {{noti.lecture.instructor.name}}</h2>
+        <p>{{noti.content}}</p>
+        <i class="icon icon-accessory last-history">
+          <span class="item-note" am-time-ago="noti.lecture.last_history.created_at | toTime"></span>
+        </i>
+        <i class="icon ion-chevron-right icon-accessory">
+        </i>
+      </a>
+
+    </div>
+  </ion-content>
+</ion-view>

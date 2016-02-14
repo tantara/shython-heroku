@@ -1,1 +1,46 @@
 /* Empty. Add your own CSS if you like */
+
+.tabs-striped .tab-item {
+  border-color: #11c1f3 !important;
+}
+
+.button.pressed {
+  color: #11c1f3;
+}
+
+.button.pressed:hover {
+  color: #11c1f3;
+}
+
+.button-xsmall {
+  font-size: 10px;
+  padding: 1px 8px 1px;
+  margin: 0 2px;
+  line-height: 22px;
+  min-width: 10px;
+  min-height: 26px;
+}
+
+/* iOS Specific Overrides to fix logo overlap */
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .item-input-wrapper {
+  margin-top: -1px !important;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset .button {
+  margin-top: -1px !important;
+}
+.platform-ios.platform-cordova:not(.fullscreen) .bar-header:not(.bar-subheader).item-input-inset {
+  height: 50px;
+}
+i.last-history {
+  padding-right: 25px;
+}
+.padding-abb {
+  line-height: 30px;
+  padding-top: 3px;
+  padding-bottom: 0px;
+  max-height: 63px;
+}
+
+.multiline-p {
+  white-space: normal !important;
+}

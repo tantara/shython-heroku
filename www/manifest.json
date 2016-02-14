@@ -1,0 +1,12 @@
+{  
+  "name": "샤이썬: 서울대학교 수강신청 빈자리 알리미",  
+  "short_name": "샤이썬",  
+  "icons": [{  
+    "src": "img/icon.png",  
+    "sizes": "1024x1024",
+    "type": "image/png"
+  }],  
+  "start_url": "/#/tab/home",  
+  "display": "standalone",  
+  "gcm_sender_id": "607566472910"
+}
